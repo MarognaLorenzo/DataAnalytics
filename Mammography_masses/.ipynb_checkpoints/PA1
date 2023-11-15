@@ -1,0 +1,96 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# In[2]:
+
+
+import pandas as pd
+pd.__version__
+
+
+# In[4]:
+
+
+import as pd
+
+
+# In[6]:
+
+
+import pandas as pd
+
+
+# Task 1:Download and import dataset (5 Points)
+
+# In[24]:
+
+
+import pandas as pd
+
+#change to relative path later
+# Define the file path
+file_path = r'C:\Users\jayma\DA 2023\PA1\mammographic_masses_data.csv'
+
+# Load the CSV file into a DataFrame
+df = pd.read_csv(file_path)
+
+# Display the first few rows of the DataFrame to verify the import
+df
+
+
+# 2.1:
+# 1. df mean for an average that you want to know in the records.
+# 2. df min/max if you want to know the minimum or maximum value.
+# 3. df count to know how many records that provide data you have.
+# 
+
+# In[34]:
+
+
+#2.2
+# Use loc to filter rows where 'Severity' is 1 and select the 'Margin' column
+filtered_data = df.loc[df['Severity'] == 1, 'Margin']
+
+# Display the result
+print(filtered_data)
+
+
+# In[35]:
+
+
+get_ipython().system('pip install Plotly')
+
+
+# In[38]:
+
+
+try:
+    import plotly
+    print("Plotly is installed.")
+except ImportError:
+    print("Plotly is not installed.")
+
+
+# In[39]:
+
+
+import plotly.express as px
+
+
+# In[42]:
+
+
+import plotly.express as px
+
+# Assuming you want to create a scatter plot using 'Age' as the x-axis and 'Margin' as the y-axis
+fig = px.scatter(df, x='Age', y='Density', title='Scatter Plot')
+
+# Display the plot
+fig.show()
+
+
+# In[ ]:
+
+
+
+

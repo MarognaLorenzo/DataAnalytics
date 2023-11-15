@@ -1,0 +1,51 @@
+• Give an overview of the dataset and highlight some interesting findings. (2.1-2.3)
+    1000 cases with some missing datas here and there
+    women from 18 to 96 years old with an average of 55 years
+    mathematical insight on nominal data shoul not be considered (Density and BA are ordinal)
+    On average, people with a malignant mass are older with a benign one.
+    83% of cases are low-density
+
+
+• Why does visualization help you to get an overview of your dataset? Mention the three
+goals of visualization? (Whole assignment)
+• Presentation -> e.g. Pie charts to present shape distribution of people in our dataset
+• Confirmatory Analysis -> e.g. Heatmap on shape/Margin after automatic feature selection
+• Exploratory Analysis -> e.g. pca plotting to see how people were distributed makes us make the hypotheses that Shape and Margin are selected
+
+•Explain the reasons behind your data cleaning procedure. (3.1)
+dropping the column would not have been suitable of course, so we had to drop the index.
+We could have filled with the mean or the median value but since they're nominal data using statistical value like the mean didn't make sense.
+We could have tried to insert a probable value but it was much easier for the implementation to just drop the index.
+Name three techniques which can be applied in the data preprocessing step (3)
+Binning / Regression / Clustering -> cleaning
+Normalization (Linear / Sqare root / logarithmic )  
+Segmentation ( Binning again ) 
+Sampling (Random / Clusterized ) -> datapoints reduction
+pca / tsvd ecc -> dimension reduction
+
+What are the general reasons for normalization? (3.2) 
+	map the domain of a data to a fixed range 0-1
+	Using different types of normalization we can better the quality of the visualization
+
+Explain which normalization procedure you have used on which variables and why.
+(3.2)
+	We just used a linear normalization on the "Age" column because it's the only numerical data and it wouldn't make sense to use it elsewhere.
+We chose a linear normalization because the visualization was working fine just like that.
+
+•Explain the results of Sklearn's automatic feature selection. Why has it selected these
+features? (4.1)
+	afs selected "Margin" and "Shape" because they have a great impact on determine the Severity of the case. In the heatmap we can see that in the most common type of M/S combination there is a clear tend of the Severity, with pretty unbalanced probabilities.
+
+Explain the results of PCA and TSVD and its impact. (4.2, 4.3)
+	PCA actually grouped every person in a group of a matrix [4,5]. We haven't prooved this but we think it's just a confirmation of the afs result, and the grid rappresents the S/M distribution. pc1 and pc2 a linear combination of the others feature in which the majority of the weight is rappresented by Margin and Shape.
+
+TSVD result seems nonsense when it is looked in a 2 dimensional scatter plot, and the reason why is that it is actually a 3D structure projected on a 2D plane. Using a 3D scatter plot we see that we actually obtained a (4,4,5) tensor, which make us think that TSVD preferres to use Density value as well to rappresent the whole datapoint.
+
+Compare the applied feature reduction methods. Which performs best? (4.1-4.3)
+	afs and pca gave a better result than TSVD, probably afs was better in this case because there was no risk to interpret the result badly
+Is PCA always reducing the dimensions? What is the output of a PCA? (4.2)
+	No it's not, PCA is just rotating and scaling the axes in order to have a better rappresentation of the data
+Is PCA robust against rotations of the whole data space (is the result still the same
+after rotating the data space)? (4.2) yes
+For which case is the usage of a PCA not reasonable? (4.2)
+	For those cases in which a systematic error is present, because the noise is seriously affecting the mean of the values.
